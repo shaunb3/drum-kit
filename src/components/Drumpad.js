@@ -67,6 +67,7 @@ for (let i in soundData){
     let soundFile= new Audio(soundData[i].url)
      soundFile.play()
     console.log(soundFile)
+  
   }
 }
 
