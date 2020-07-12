@@ -53,45 +53,31 @@ const soundData = [{
 
 
 class Drumpad extends Component{
-
-  state={soundObj:soundData}
-
-
-handlePress= event=>{
-
-
-for (let i in soundData){
-
-  if(event.target.id === soundData[i].keyTrigger){
-    
-    let soundFile= new Audio(soundData[i].url)
-     soundFile.play()
-    console.log(soundFile)
+state={soundName:"none"}
   
-  }
-}
-
-
-  
-  
-  
-  
-}
-
-
-
-
   render(){
 
     const keyPad = soundData.map((item)=>{
   return (
-    <Drumkey  keyS={item.keyTrigger} handlePress={this.handlePress} key={item.keyTrigger}/>
+    
+    <Drumkey  
+    keyS={item.keyTrigger}
+    name={item.id} 
+    handlePress={(event)=>{
+      this.setState({soundName:event.target.getAttribute("data-name")})
+      let audio= new Audio(item.url)
+      
+      audio.play()
+      }} 
+    key={item.keyTrigger}/>
+    
   )
 })
 
 
     return (
-      <div>
+      <div id="drum-machine">
+      <div id="display">{this.state.soundName}</div>
       {keyPad}
       </div>
      
