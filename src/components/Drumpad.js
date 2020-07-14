@@ -53,8 +53,15 @@ const soundData = [{
 
 
 class Drumpad extends Component{
-state={soundName:"none"}
+
+  state={soundName:"none"}
   
+updateDisplay=(event)=>{
+//console.log(event.target.getAttribute("data-name"))
+       this.setState({soundName:event.target.getAttribute("data-name")})
+//console.log(this.state.soundName)
+}
+
   render(){
 
     const keyPad = soundData.map((item)=>{
@@ -63,13 +70,10 @@ state={soundName:"none"}
     <Drumkey  
     keyS={item.keyTrigger}
     name={item.id} 
-    handlePress={(event)=>{
-      this.setState({soundName:event.target.getAttribute("data-name")})
-      let audio= new Audio(item.url)
-      
-      audio.play()
-      }} 
-    key={item.keyTrigger}/>
+    handleDisplay={this.updateDisplay}
+    key={item.keyTrigger}
+    
+    src={item.url}/>
     
   )
 })

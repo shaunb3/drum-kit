@@ -5,18 +5,42 @@ import React,{Component} from 'react';
 
 class Drumkey extends Component{
 
+audioSrc= React.createRef();
+
+playAudio=()=>{
+  
+  this.audioSrc.current.currentTime =0
+  this.audioSrc.current.play()
+      
+}
+
+handleActions=(event)=>{
+  this.playAudio()
+  this.props.handleDisplay(event)
+}
+
+
   render(){
     return (
+      
     <div 
+    id={this.props.keyS}
     
-    onClick={this.props.handlePress} className="drum-pad" 
-    data-name={this.props.name}>
+    onClick={this.handleActions} 
+    className="drum-pad"
+    data-name={this.props.name} 
+    >
     
     {this.props.keyS}
       <audio 
       id={this.props.keyS} 
-      className="clip"
-      ></audio>
+      className="clip"       
+      ref={this.audioSrc}
+      src={this.props.src}
+      />
+      
+      
+      
     </div>
     )
 
