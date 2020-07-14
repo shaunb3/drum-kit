@@ -24,7 +24,7 @@ handleActions=(event)=>{
     return (
       
     <div 
-    id={this.props.keyS}
+    id={"pad-"+this.props.keyS}
     
     onClick={this.handleActions} 
     className="drum-pad"

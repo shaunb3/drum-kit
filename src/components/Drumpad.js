@@ -59,8 +59,25 @@ class Drumpad extends Component{
 updateDisplay=(event)=>{
 //console.log(event.target.getAttribute("data-name"))
        this.setState({soundName:event.target.getAttribute("data-name")})
-//console.log(this.state.soundName)
+
 }
+
+//add active class keydown and click
+
+  componentDidMount() {
+    document.addEventListener("keydown",(e)=>{
+      const id = e.key.toUpperCase();   
+
+     const drumKey = document.getElementById(id)
+     
+     if(drumKey){
+       drumKey.currentTime=0
+       drumKey.play()
+      }
+      
+
+})
+  }
 
   render(){
 
@@ -83,6 +100,7 @@ updateDisplay=(event)=>{
       <div id="drum-machine">
       <div id="display">{this.state.soundName}</div>
       {keyPad}
+    
       </div>
      
     )

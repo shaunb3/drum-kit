@@ -29,3 +29,7 @@ body{
     width:100%;
     text-align:center;
   }
+
+  .active{
+    background-color: #71b0da;
+  }
