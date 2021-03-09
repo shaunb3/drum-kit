@@ -7,16 +7,47 @@ class Drumkey extends Component{
 
 audioSrc= React.createRef();
 
+
+
+  componentDidMount() {
+    document.addEventListener("keydown",(e)=>{
+      const id = e.key.toUpperCase();   
+
+     const drumKey = document.getElementById(id)
+     
+     if(drumKey){
+       drumKey.currentTime=0
+       drumKey.play()
+       drumKey.parentNode.classList.add('active');
+       
+      }
+
+    });
+
+      this.audioSrc.current.addEventListener('ended', (e) => { 
+      const parent = e.target.parentNode;
+      parent.classList.remove('active');
+      
+    });
+
+  }
+
+
+
 playAudio=()=>{
   
   this.audioSrc.current.currentTime =0
   this.audioSrc.current.play()
-      
+
+    const parent = this.audioSrc.current.parentNode;
+    parent.classList.add('active');
+  
 }
 
 handleActions=(event)=>{
   this.playAudio()
   this.props.handleDisplay(event)
+  
 }
 
 

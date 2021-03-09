@@ -64,20 +64,8 @@ updateDisplay=(event)=>{
 
 //add active class keydown and click
 
-  componentDidMount() {
-    document.addEventListener("keydown",(e)=>{
-      const id = e.key.toUpperCase();   
 
-     const drumKey = document.getElementById(id)
-     
-     if(drumKey){
-       drumKey.currentTime=0
-       drumKey.play()
-      }
-      
 
-})
-  }
 
   render(){
 
